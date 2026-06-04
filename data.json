@@ -1,0 +1,55 @@
+[
+  {
+    "height": 180,
+    "weight": 80,
+    "bmi": 24.69,
+    "date": "2025-11-14T04:10:35.214Z"
+  },
+  {
+    "height": 181,
+    "weight": 75,
+    "bmi": 22.89,
+    "date": "2025-11-14T04:11:06.475Z"
+  },
+  {
+    "height": 191,
+    "weight": 75,
+    "bmi": 20.56,
+    "date": "2025-11-14T04:12:45.331Z"
+  },
+  {
+    "height": 180,
+    "weight": 80,
+    "bmi": 24.69,
+    "date": "2025-11-14T04:13:44.685Z",
+    "condition": "Normal weight"
+  },
+  {
+    "height": 184,
+    "weight": 82,
+    "bmi": 24.22,
+    "date": "2025-11-14T04:14:55.079Z",
+    "condition": "Normal weight"
+  },
+  {
+    "height": 180,
+    "weight": 80,
+    "bmi": 24.69,
+    "date": "2025-11-14T04:17:08.850Z",
+    "condition": "Normal weight"
+  },
+  {
+    "height": 180,
+    "weight": 80,
+    "bmi": 24.69,
+    "date": "2026-06-02T19:23:35.356Z",
+    "condition": "Normal weight"
+  },
+  {
+    "height": 185,
+    "weight": 88,
+    "bmi": 25.71,
+    "date": "2026-06-02T19:24:00.710Z",
+    "condition": "Overweight"
+  }
+]
