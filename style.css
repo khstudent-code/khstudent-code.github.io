@@ -1,0 +1,134 @@
+body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(0deg, rgb(201, 255, 166), rgb(255, 249, 214) 70%, rgb(255, 143, 161));
+  min-height: 100vh;
+  font-family: 'Courier New', Courier, monospace;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 465px;
+  background: rgba(200, 200, 200, 0.50);
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(0,0,0,.3);
+  padding: 20px;
+  margin: 5px;
+}
+.input {
+  display: flex;
+  flex-wrap: wrap;
+  background: rgba(255,255,255, .4);
+  border-color: rgba(255,255,255, .5);
+  font-size: 18px;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+}
+.fatInputContainer{
+  display: contents;
+  flex-wrap: wrap;
+  font-size: 18px;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+}
+.btn {
+  background: lightgreen;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 0px;
+  font-size: 20px;
+  box-shadow: 0 0 4px rgba(0,0,0,.3);
+  cursor: pointer;
+}
+.btn:hover{
+  transform: scale(1.0125);
+  background-color: rgb(170, 238, 170);
+  transition: all 0.5s ease;
+}
+.recipeBtn {
+  background: rgb(255, 180, 193);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 0px;
+  font-size: 20px;
+  box-shadow: 0 0 4px rgba(0,0,0,.3);
+  cursor: pointer;
+}
+.recipeBtn:hover{
+  transform: scale(1.0125);
+  background-color: rgb(253, 200, 209);
+  transition: all 0.5s ease;
+}
+.info-text{
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+.checkContainer{
+    display:inline-grid;
+    width: 100%;
+    margin:auto;
+    grid-template-columns: 40px auto;
+    grid-template-rows: 100%;
+    grid-gap: 0px;
+    grid-template-areas: 
+        "check" "info";
+    justify-content: start;
+    border: 0px solid black;
+}
+.box{
+    display:flex;
+    align-items: flex-start;
+    justify-content: center;
+    border: 0px solid rgb(0, 0, 0);
+}
+.clickable{
+    color: #000080;
+    text-decoration: underline;
+    cursor:pointer;
+    font-weight: bold;
+}
+
+/*RECIPE PAGE STYLES*/
+
+.recipeGrid{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin:10px;
+}
+.recipeCard{
+  display: flex;
+  border: 1px solid lightskyblue;
+  border-radius: 8px;
+  width: 225px;
+  padding:10px;
+  background-color: #FFFFFF;
+}
+.recipeCard p {
+  display: block;
+  margin: 8px 0;
+  text-align: left;
+
+}
+.recipeCard h3 {
+  margin-top: 0;
+}
+.errorMsg{
+  color: red;
+}
+hr {
+  color: pink;
+}

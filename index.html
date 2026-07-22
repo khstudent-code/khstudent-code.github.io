@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ice Cream Recipe Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Ice Cream Recipe Calculator</h1>
+
+        Name of the flavor:
+        <input type="text" class="input" id="ingName" placeholder="Flavor Name">
+
+        Weight of flavor component:
+        <input type="number" class="input" id="ingWeight" value="200" min="0" placeholder="Enter the weight of the flavor component">
+        
+        <div id="fatText" style="display: contents;">
+            Flavor component percent fat:
+        </div>
+        <input type="number" class="input" id="ingPercFat" value="20" min="0" max="100" placeholder="Enter the percent fat in the flavor component">
+        
+        <div id ="sugarInputContainer" style="display: contents;">
+            Flavor Component percent sugar:
+            <input type="number" class="input" id="ingPercSugar" value="30" min="0" max="100" placeholder="Enter the percent sugar in the flavor component">
+        </div>
+
+        <div class="checkContainer">
+            <input type="checkbox" id = "isChocolate" name="isChocolate">
+            <label for="isChocolate">Flavor component is chocolate</label>
+        </div>
+        <p style="margin-bottom: 20px;"></p>
+
+        <script> //hides/shows sugar input for chocolate, plus max/clamp logic
+            const chocolateInput = document.getElementById("isChocolate");
+            const fatText = document.getElementById("fatText");
+            const sugarInputContainer = document.getElementById("sugarInputContainer");
+            const sugarInput = document.getElementById("ingPercSugar");
+            const fatInput = document.getElementById("ingPercFat");
+
+            function onIsChocolateChange(){
+                const isChocolate = chocolateInput.checked;
+                if(isChocolate){
+                    fatText.innerHTML = "Chocolate percent fat:"
+                    fatInput.max = 50;
+                    if(parseInt(fatInput.value) > 50){
+                        fatInput.value = 50;
+                    }
+                    sugarInput.value = Math.max(0, 100 - (2*parseInt(fatInput.value)));
+                    sugarInput.max = Math.max(0, 100 - (2*parseInt(fatInput.value)));
+                } else {
+                    fatText.innerHTML = "Flavor component percent fat:"
+                    fatInput.max = 100;
+                    let newCap = Math.max(0, 100 - parseInt(fatInput.value));
+                    sugarInput.max = newCap;
+
+                    if(parseInt(sugarInput.value) > newCap){
+                        sugarInput.value = newCap;
+                    }
+                }
+                sugarInputContainer.style.display = isChocolate ? "none" : "contents";
+                sugarInput.disabled = isChocolate;
+            }
+
+            function onFatChange(){
+                const isChocolate = chocolateInput.checked;
+                if(isChocolate){
+                    fatInput.max = 50; //maximum value for fat when ing is chocolate
+
+                    if(parseInt(fatInput.value) > 50){
+                        fatInput.value = 50;
+                    }
+
+                    let newCap = Math.max(0, 100 - (2*parseInt(fatInput.value)));
+                    sugarInput.value = newCap;
+                    sugarInput.max = newCap;
+                    
+                } else{
+                    fatInput.max = 100;
+
+                    if(parseInt(fatInput.value) > 100){
+                        fatInput.value = 100;
+                    }
+
+                    let newCap = Math.max(0, 100 - parseInt(fatInput.value));
+                    sugarInput.max = newCap;
+
+                    if(parseInt(sugarInput.value) > newCap){
+                        sugarInput.value = newCap;
+                    }
+                }
+            }
+
+            function onSugarChange(){
+                const isChocolate = chocolateInput.checked;
+                if(isChocolate){
+                    let newCap = Math.max(0, 100 - (2*parseInt(fatInput.value)));
+                    sugarInput.value = newCap;
+                    sugarInput.max = newCap;
+
+                    if(parseInt(sugarInput.value) > newCap){
+                        sugarInput.value = newCap;
+                    }
+                } else{
+                    let newCap = Math.max(0, 100 - (parseInt(fatInput.value)));
+                    sugarInput.max = newCap;
+
+                    if(parseInt(sugarInput.value) > newCap){
+                        sugarInput.value = newCap;
+                    }
+                }
+            }
+
+            chocolateInput.addEventListener("change", onIsChocolateChange);
+            onIsChocolateChange(); //if isChocolate is checked from cache memory, need to update at load
+            fatInput.addEventListener("change", onFatChange);
+            onFatChange(); //likewise
+            sugarInput.addEventListener("change", onSugarChange);
+            onSugarChange();
+
+        </script>
+        
+        Weight of final mix:
+        <input type="number" class="input" id="mixWeight" value="1000" min = 0; placeholder="Enter the desired mix weight">
+
+        Final mix percent fat:
+        <input type="number" class="input" id="mixPercFat" value="16" min="6" max="25" placeholder="Enter the percent fat in the final mix">
+
+        Final mix percent sugar:
+        <input type="number" class="input" id="mixPercSugar" value="20" min="10" max="25" placeholder="Enter the percent sugar in the final mix">
+
+        Egg yolks per 1L of mix:
+        <input type="number" class="input" id="mixPercYolk" value="8" min="0" max="10" placeholder="Enter the percent egg yolk in final mix (1 egg yolk = 17 grams)">
+
+        <div class="checkContainer">
+            <input type="checkbox" id="useAlcohol" name="useAlcohol">
+            <label for="useAlcohol">Use 80 proof alcohol to soften mix</label>
+            <input type="checkbox" id="saveRecipe" name="saveRecipe">
+            <label for="saveRecipe">Save recipe</label>
+        </div>
+        <p style="margin-bottom: 20px;"></p>
+
+        <button class="btn" id="btn">Create Recipe</button>
+
+        <input disabled type="text" class="input" id="mix-result">
+
+        <h4 class="info-text"><span id="mixRecipe"></span></h4>
+
+        <button class="recipeBtn" onclick="window.location.href='recipes.html'">View Saved Recipes</button>
+
+        <p id="helpTag"><span class="clickable" style="display: flex; justify-content: center; align-items: center;" data-action="showHelp">help</span></p>
+
+        </div>
+
+    <div class="container" id="helpBox" style="width: 400px; flex-wrap: wrap;">
+        <p>test </p> 
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
